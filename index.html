@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>デジタル・マインド・シェルター</title>
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#f3f4f6">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { transition: background 1s ease; }
+        .hidden-canvas { display: none; }
+    </style>
+</head>
+<body id="app-body" class="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 text-gray-800 font-sans p-4">
+    <div class="max-w-md mx-auto bg-white/80 backdrop-blur-md rounded-2xl shadow-xl overflow-hidden p-6 mt-4">
+        <h1 class="text-2xl font-bold text-center text-gray-700 mb-6">デジタル・マインド・シェルター</h1>
+        
+        <!-- 感情チューニング -->
+        <div class="mb-6">
+            <p class="text-sm font-semibold text-gray-600 mb-3">1. 今の感情に近いものを選んでください</p>
+            <div class="grid grid-cols-2 gap-3" id="emotion-buttons">
+                <!-- JSでボタン生成 -->
+            </div>
+        </div>
+
+        <!-- 毒抜き＆バウンダリー入力フォーム -->
+        <div class="mb-6">
+            <p class="text-sm font-semibold text-gray-600 mb-2">2. 今のストレスや出来事を吐き出してください</p>
+            <textarea id="stress-input" rows="4" class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white/90 transition-shadow resize-none" placeholder="例: 理不尽に怒られてモヤモヤする..."></textarea>
+        </div>
+
+        <!-- 送信ボタン -->
+        <button id="submit-btn" class="w-full bg-gray-800 text-white font-bold py-3 rounded-xl hover:bg-gray-700 transition shadow-lg flex justify-center items-center">
+            <span id="btn-text">処方箋を生成する</span>
+            <svg id="loading-spinner" class="animate-spin ml-2 h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
+        </button>
+        <p id="error-msg" class="text-red-500 text-sm mt-2 hidden"></p>
+
+        <!-- AI処方箋＆結果エリア -->
+        <div id="result-area" class="mt-8 hidden opacity-0 transition-opacity duration-1000">
+            <div class="space-y-4 text-sm bg-white/60 p-4 rounded-xl mb-6 shadow-sm border border-white">
+                <div>
+                    <h3 class="font-bold text-gray-700 border-b pb-1 mb-2">🧠 感情ラベリング</h3>
+                    <p id="res-labeling" class="text-gray-600 leading-relaxed"></p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-700 border-b pb-1 mb-2">🛡 課題の分離</h3>
+                    <p id="res-separation" class="text-gray-600 leading-relaxed"></p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-700 border-b pb-1 mb-2">🌸 セルフコンパッション</h3>
+                    <p id="res-compassion" class="text-gray-600 leading-relaxed"></p>
+                </div>
+            </div>
+
+            <!-- 画像プレビュー＆DL -->
+            <div class="text-center">
+                <p class="text-sm font-bold text-gray-700 mb-2">📱 あなた専用の処方箋</p>
+                <img id="preview-image" class="w-48 mx-auto rounded-xl shadow-md border-4 border-white mb-4" alt="処方箋プレビュー">
+                <button id="download-btn" class="bg-blue-500 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-600 transition shadow-md">
+                    画像を保存する
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 画像生成用Canvas (非表示) -->
+    <canvas id="amuletCanvas" class="hidden-canvas"></canvas>
+
+    <script src="./app.js"></script>
+</body>
+</html>
