@@ -28,7 +28,7 @@ const themes = {
         bgClass: "from-blue-100 to-cyan-100", btnClass: "bg-blue-100 hover:bg-blue-200 text-blue-800"
     },
     anger: {
-        id: "anger", label: "理不尽な怒り", 
+        id: "anger", label: "理不尽への怒り", 
         colorStart: "#a18cd1", colorEnd: "#fbc2eb", 
         bgClass: "from-purple-100 to-indigo-100", btnClass: "bg-purple-100 hover:bg-purple-200 text-purple-800"
     },
