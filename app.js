@@ -38,7 +38,7 @@ const themes = {
         bgClass: "from-orange-100 to-rose-100", btnClass: "bg-orange-100 hover:bg-orange-200 text-orange-800"
     },
     anxiety: {
-        id: "anxiety", label: "夜の不安", 
+        id: "anxiety", label: "漠然とした不安", 
         colorStart: "#667eea", colorEnd: "#764ba2", 
         bgClass: "from-indigo-200 to-purple-300", btnClass: "bg-indigo-100 hover:bg-indigo-200 text-indigo-800"
     }
