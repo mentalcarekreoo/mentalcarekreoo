@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function renderEmotionButtons() {
     const container = document.getElementById("emotion-buttons");
+    container.innerHTML = ""; // 重複防止
     Object.values(themes).forEach(theme => {
         const btn = document.createElement("button");
         btn.className = `py-2 px-4 rounded-xl font-medium transition ${theme.btnClass} border-2 border-transparent`;
@@ -140,7 +141,7 @@ function displayResult(data) {
     document.getElementById("res-labeling").innerText = data.labeling;
     document.getElementById("res-separation").innerText = data.separation;
     document.getElementById("res-compassion").innerText = data.compassion;
-    document.getElementById("res-phrase").innerText = data.phrase; // ← ここで今日の一言を表示
+    document.getElementById("res-phrase").innerText = data.phrase;
     
     const resultArea = document.getElementById("result-area");
     resultArea.classList.remove("hidden");
@@ -151,23 +152,19 @@ function generateAmuletImage(phrase, theme) {
     const canvas = document.getElementById("amuletCanvas");
     const ctx = canvas.getContext("2d");
     
-    // スマホ壁紙サイズ (9:16)
     canvas.width = 1080;
     canvas.height = 1920;
 
-    // 背景グラデーション
     const grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
     grad.addColorStop(0, theme.colorStart);
     grad.addColorStop(1, theme.colorEnd);
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // テキスト設定
     ctx.fillStyle = "#ffffff";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
-    // メインフレーズ（長すぎる場合は2行に分割）
     ctx.font = "bold 80px sans-serif";
     ctx.shadowColor = "rgba(0, 0, 0, 0.2)";
     ctx.shadowBlur = 10;
@@ -183,12 +180,10 @@ function generateAmuletImage(phrase, theme) {
         ctx.fillText(phrase, canvas.width / 2, canvas.height / 2);
     }
 
-    // サブタイトル
     ctx.shadowBlur = 0;
     ctx.font = "30px sans-serif";
     ctx.fillText("デジタル・マインド・シェルター", canvas.width / 2, canvas.height - 100);
 
-    // プレビュー画像に反映
     const previewImg = document.getElementById("preview-image");
     previewImg.src = canvas.toDataURL("image/png");
 }
@@ -197,4 +192,40 @@ function downloadImage() {
     const canvas = document.getElementById("amuletCanvas");
     const link = document.createElement("a");
     link.download = "mind_prescription.png";
-    link.href =
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+}
+
+// ==========================================
+// 7. ユーティリティ・PWA登録
+// ==========================================
+function setLoading(isLoading) {
+    const btn = document.getElementById("submit-btn");
+    const text = document.getElementById("btn-text");
+    const spinner = document.getElementById("loading-spinner");
+    
+    if (isLoading) {
+        btn.disabled = true;
+        text.innerText = "生成中...";
+        spinner.classList.remove("hidden");
+    } else {
+        btn.disabled = false;
+        text.innerText = "処方箋を生成する";
+        spinner.classList.add("hidden");
+    }
+}
+
+function showError(msg) {
+    const errorEl = document.getElementById("error-msg");
+    errorEl.innerText = msg;
+    if (msg) errorEl.classList.remove("hidden");
+    else errorEl.classList.add("hidden");
+}
+
+function registerServiceWorker() {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js')
+            .then(() => console.log('Service Worker Registered'))
+            .catch(err => console.error('Service Worker Failed', err));
+    }
+}
