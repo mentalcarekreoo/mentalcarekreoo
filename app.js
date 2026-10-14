@@ -140,6 +140,7 @@ function displayResult(data) {
     document.getElementById("res-labeling").innerText = data.labeling;
     document.getElementById("res-separation").innerText = data.separation;
     document.getElementById("res-compassion").innerText = data.compassion;
+    document.getElementById("res-phrase").innerText = data.phrase; // ← ここで今日の一言を表示
     
     const resultArea = document.getElementById("result-area");
     resultArea.classList.remove("hidden");
@@ -196,40 +197,4 @@ function downloadImage() {
     const canvas = document.getElementById("amuletCanvas");
     const link = document.createElement("a");
     link.download = "mind_prescription.png";
-    link.href = canvas.toDataURL("image/png");
-    link.click();
-}
-
-// ==========================================
-// 7. ユーティリティ・PWA登録
-// ==========================================
-function setLoading(isLoading) {
-    const btn = document.getElementById("submit-btn");
-    const text = document.getElementById("btn-text");
-    const spinner = document.getElementById("loading-spinner");
-    
-    if (isLoading) {
-        btn.disabled = true;
-        text.innerText = "生成中...";
-        spinner.classList.remove("hidden");
-    } else {
-        btn.disabled = false;
-        text.innerText = "処方箋を生成する";
-        spinner.classList.add("hidden");
-    }
-}
-
-function showError(msg) {
-    const errorEl = document.getElementById("error-msg");
-    errorEl.innerText = msg;
-    if (msg) errorEl.classList.remove("hidden");
-    else errorEl.classList.add("hidden");
-}
-
-function registerServiceWorker() {
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js')
-            .then(() => console.log('Service Worker Registered'))
-            .catch(err => console.error('Service Worker Failed', err));
-    }
-}
+    link.href =
