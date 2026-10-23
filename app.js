@@ -691,7 +691,8 @@ const CounselorModule = {
                     <div class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs flex-shrink-0">🕊️</div>
                     <div class="bg-white border border-gray-100 text-gray-800 rounded-2xl rounded-tl-none p-3 shadow-sm max-w-[85%] leading-relaxed">
                         こんにちは。ここは誰にも見られない、あなただけの安全な避難所です。<br><br>
-                        今のお気持ちや、誰にも言えないモヤモヤ、どんなことでも自由にお話しくださいね。このお部屋の対話内容は一切記録されませんので、安心してお話しください。
+                        今のお気持ちや誰にも言えないモヤモヤなど、どんなことでも自由にお話しくださいね。<br><br>
+                        <span class="text-[11px] text-gray-500 block border-t border-gray-100 pt-1.5 mt-1">※当アプリに対話内容は一切保存・記録されません。プライバシー保護のため、本名や連絡先などの個人情報の入力はお控えください。</span>
                     </div>
                 </div>
             `;
