@@ -337,6 +337,7 @@ let currentEmotion = null;
 document.addEventListener("DOMContentLoaded", () => {
     AudioModule.init();
     initShelterMenu();
+    CounselorModule.init();
     renderEmotionButtons();
     registerServiceWorker();
 
@@ -527,3 +528,180 @@ function registerServiceWorker() {
             .catch(err => console.error('Service Worker Failed', err));
     }
 }
+
+// ==========================================
+// 10. AIカウンセラー対話モジュール（完全非公開・非保存）
+// ==========================================
+const CounselorModule = {
+    messages: [], // [{ role: "user" | "model", text: "..." }]（メモリ保持のみ、保存なし）
+    currentStance: "優しく共感してほしい",
+    isLoading: false,
+
+    init: function() {
+        const openBtn = document.getElementById("open-counselor-btn");
+        const closeBtn = document.getElementById("close-counselor-btn");
+        const modal = document.getElementById("counselor-modal");
+        const sendBtn = document.getElementById("counsel-send-btn");
+        const input = document.getElementById("counsel-input");
+        const clearBtn = document.getElementById("counsel-clear-btn");
+
+        if (openBtn && modal) {
+            openBtn.addEventListener("click", () => {
+                modal.classList.remove("hidden");
+                setTimeout(() => input?.focus(), 150);
+            });
+        }
+
+        if (closeBtn && modal) {
+            closeBtn.addEventListener("click", () => {
+                modal.classList.add("hidden");
+            });
+        }
+
+        // スタンス選択
+        const stanceBtns = document.querySelectorAll(".stance-btn");
+        stanceBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                stanceBtns.forEach(b => {
+                    b.classList.remove("border-emerald-400", "bg-emerald-600", "text-white", "font-bold");
+                    b.classList.add("border-emerald-200", "bg-white", "text-emerald-800");
+                });
+                btn.classList.remove("border-emerald-200", "bg-white", "text-emerald-800");
+                btn.classList.add("border-emerald-400", "bg-emerald-600", "text-white", "font-bold");
+                this.currentStance = btn.getAttribute("data-stance");
+            });
+        });
+
+        // 送信イベント
+        if (sendBtn) {
+            sendBtn.addEventListener("click", () => this.sendMessage());
+        }
+
+        if (input) {
+            input.addEventListener("keydown", (e) => {
+                if (e.key === "Enter" && !e.shiftKey) {
+                    e.preventDefault();
+                    this.sendMessage();
+                }
+            });
+        }
+
+        // 会話リセット
+        if (clearBtn) {
+            clearBtn.addEventListener("click", () => {
+                if (confirm("会話をリセットしますか？この対話内容はブラウザからも消去されます。")) {
+                    this.clear();
+                }
+            });
+        }
+    },
+
+    sendMessage: async function() {
+        const input = document.getElementById("counsel-input");
+        const text = input ? input.value.trim() : "";
+        if (!text || this.isLoading) return;
+
+        // ユーザーの発言を画面と一時メモリに追加
+        this.addMessage("user", text);
+        if (input) input.value = "";
+        this.setLoading(true);
+
+        try {
+            const payload = {
+                action: "counsel",
+                stance: this.currentStance,
+                messages: this.messages
+            };
+
+            const response = await fetch(GAS_WEB_APP_URL, {
+                method: "POST",
+                headers: { "Content-Type": "text/plain" },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json();
+            if (result.success && result.text) {
+                this.addMessage("model", result.text);
+            } else {
+                throw new Error(result.error || "カウンセラーからの返答を取得できませんでした。");
+            }
+        } catch (err) {
+            this.addSystemMessage("対話エラー: " + err.message);
+        } finally {
+            this.setLoading(false);
+        }
+    },
+
+    addMessage: function(role, text) {
+        this.messages.push({ role, text });
+        const container = document.getElementById("counsel-messages");
+        if (!container) return;
+
+        const isUser = role === "user";
+        const wrapper = document.createElement("div");
+        wrapper.className = isUser ? "flex items-start justify-end gap-2" : "flex items-start gap-2";
+
+        const formattedText = text.replace(/\n/g, "<br>");
+
+        if (isUser) {
+            wrapper.innerHTML = `
+                <div class="bg-emerald-600 text-white rounded-2xl rounded-tr-none p-3 shadow-sm max-w-[85%] leading-relaxed">
+                    ${formattedText}
+                </div>
+            `;
+        } else {
+            wrapper.innerHTML = `
+                <div class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs flex-shrink-0">🕊️</div>
+                <div class="bg-white border border-gray-100 text-gray-800 rounded-2xl rounded-tl-none p-3 shadow-sm max-w-[85%] leading-relaxed">
+                    ${formattedText}
+                </div>
+            `;
+        }
+
+        container.appendChild(wrapper);
+        container.scrollTop = container.scrollHeight;
+    },
+
+    addSystemMessage: function(text) {
+        const container = document.getElementById("counsel-messages");
+        if (!container) return;
+        const div = document.createElement("div");
+        div.className = "text-center text-xs text-red-500 my-1";
+        div.innerText = text;
+        container.appendChild(div);
+        container.scrollTop = container.scrollHeight;
+    },
+
+    setLoading: function(loading) {
+        this.isLoading = loading;
+        const btnText = document.getElementById("counsel-send-text");
+        const spinner = document.getElementById("counsel-spinner");
+        const btn = document.getElementById("counsel-send-btn");
+
+        if (loading) {
+            if (btnText) btnText.innerText = "聴いています...";
+            spinner?.classList.remove("hidden");
+            if (btn) btn.disabled = true;
+        } else {
+            if (btnText) btnText.innerText = "送信";
+            spinner?.classList.add("hidden");
+            if (btn) btn.disabled = false;
+        }
+    },
+
+    clear: function() {
+        this.messages = [];
+        const container = document.getElementById("counsel-messages");
+        if (container) {
+            container.innerHTML = `
+                <div class="flex items-start gap-2">
+                    <div class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs flex-shrink-0">🕊️</div>
+                    <div class="bg-white border border-gray-100 text-gray-800 rounded-2xl rounded-tl-none p-3 shadow-sm max-w-[85%] leading-relaxed">
+                        こんにちは。ここは誰にも見られない、あなただけの安全な避難所です。<br><br>
+                        今のお気持ちや、誰にも言えないモヤモヤ、どんなことでも自由にお話しくださいね。このお部屋の対話内容は一切記録されませんので、安心してお話しください。
+                    </div>
+                </div>
+            `;
+        }
+    }
+};
