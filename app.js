@@ -267,8 +267,8 @@ function initShelterMenu() {
         });
     }
 
-    // タブ切り替え
-    const tabs = ["sound", "art", "meditation"];
+    // タブ切り替え（4つの休息モード）
+    const tabs = ["sound", "art", "meditation", "grounding"];
     tabs.forEach(tab => {
         const btn = document.getElementById(`tab-btn-${tab}`);
         if (btn) {
@@ -281,16 +281,16 @@ function initShelterMenu() {
 }
 
 function switchShelterTab(activeTab) {
-    const tabs = ["sound", "art", "meditation"];
+    const tabs = ["sound", "art", "meditation", "grounding"];
     tabs.forEach(tab => {
         const btn = document.getElementById(`tab-btn-${tab}`);
         const content = document.getElementById(`tab-content-${tab}`);
         if (!btn || !content) return;
         if (tab === activeTab) {
-            btn.className = "flex-1 py-1.5 rounded-lg text-center bg-white text-gray-800 shadow-sm transition";
+            btn.className = "py-1.5 rounded-lg text-center bg-white text-gray-800 shadow-sm transition truncate";
             content.classList.remove("hidden");
         } else {
-            btn.className = "flex-1 py-1.5 rounded-lg text-center transition text-gray-500 hover:text-gray-700";
+            btn.className = "py-1.5 rounded-lg text-center transition truncate text-gray-500 hover:text-gray-700";
             content.classList.add("hidden");
         }
     });

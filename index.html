@@ -29,16 +29,16 @@
 
             <!-- 展開されるメニューパネル -->
             <div id="shelter-menu-panel" class="hidden mt-3 pt-3 border-t border-gray-200/60">
-                <!-- タブ切り替えボタン -->
-                <div class="flex rounded-xl bg-gray-100/90 p-1 mb-3 text-xs font-bold text-gray-600">
-                    <button id="tab-btn-sound" class="flex-1 py-1.5 rounded-lg text-center bg-white text-gray-800 shadow-sm transition">🎵 音で休む</button>
-                    <button id="tab-btn-art" class="flex-1 py-1.5 rounded-lg text-center transition">🎨 呼吸アート</button>
-                    <button id="tab-btn-meditation" class="flex-1 py-1.5 rounded-lg text-center transition">🧘 1分瞑想</button>
+                <!-- タブ切り替えボタン（4つの休息モード） -->
+                <div class="grid grid-cols-4 gap-1 rounded-xl bg-gray-100/90 p-1 mb-3 text-xs font-bold text-gray-600">
+                    <button id="tab-btn-sound" class="py-1.5 rounded-lg text-center bg-white text-gray-800 shadow-sm transition truncate">🎵 音楽</button>
+                    <button id="tab-btn-art" class="py-1.5 rounded-lg text-center transition truncate text-gray-500 hover:text-gray-700">🎨 アート</button>
+                    <button id="tab-btn-meditation" class="py-1.5 rounded-lg text-center transition truncate text-gray-500 hover:text-gray-700">🧘 瞑想</button>
+                    <button id="tab-btn-grounding" class="py-1.5 rounded-lg text-center transition truncate text-gray-500 hover:text-gray-700">🌱 応急手当</button>
                 </div>
 
-                <!-- 1. サウンドタブ -->
+                <!-- 1. 音楽タブ -->
                 <div id="tab-content-sound" class="space-y-3">
-                    <!-- YouTube厳選ヒーリング音楽（5選） -->
                     <div>
                         <h4 class="font-bold text-gray-700 text-xs mb-2 flex items-center justify-between">
                             <span>🎧 心をほぐす厳選ヒーリング音楽（5選）</span>
@@ -84,92 +84,75 @@
                     </div>
                 </div>
 
-                <!-- 2. 呼吸アートタブ -->
-                <div id="tab-content-art" class="hidden text-center py-2">
-                    <p class="text-xs text-gray-500 mb-2">光の円のリズムに合わせて、ゆっくり息を吸ったり吐いたりしてみましょう。</p>
-                    <div class="relative w-44 h-44 mx-auto flex items-center justify-center my-2">
-                        <div id="breathe-circle" class="w-24 h-24 rounded-full bg-gradient-to-tr from-cyan-400 to-blue-500 opacity-80 shadow-lg shadow-blue-300/50 flex items-center justify-center text-white font-bold text-sm transition-all duration-[4000ms] ease-in-out">
-                            <span id="breathe-text">準備</span>
+                <!-- 2. アートタブ -->
+                <div id="tab-content-art" class="hidden text-left py-1">
+                    <h4 class="font-bold text-gray-700 text-xs mb-1 flex items-center justify-between">
+                        <span>🖼️ 心を洗う名画ギャラリー（5選）</span>
+                        <span class="text-[10px] text-gray-400">タップで鑑賞</span>
+                    </h4>
+                    <p class="text-[11px] text-gray-500 mb-2">美術館所蔵のパブリックドメイン（著作権満了）名画です。心安らぐ色彩を静かに味わってください。</p>
+                    <div class="space-y-3">
+                        <!-- 1 モネ 睡蓮 -->
+                        <div class="bg-white p-2.5 rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                            <a href="https://commons.wikimedia.org/wiki/File:Claude_Monet_-_Water_Lilies_-_1906,_Ryerson.jpg" target="_blank" rel="noopener" class="block group">
+                                <img src="./images/art/monet_waterlilies.jpg" alt="モネ 睡蓮" class="w-full h-40 object-cover rounded-lg group-hover:opacity-90 transition" loading="lazy">
+                                <div class="mt-1.5 flex items-center justify-between">
+                                    <span class="text-xs font-bold text-gray-800">クロード・モネ『睡蓮』</span>
+                                    <span class="text-blue-600 text-[11px]">解説・拡大 ↗</span>
+                                </div>
+                            </a>
+                            <p class="text-[11px] text-gray-600 mt-1 leading-snug">柔らかな水面と淡い光のグラデーションを見つめていると、自然と呼吸が深くなります。</p>
                         </div>
-                    </div>
-                    <div class="flex justify-center gap-2 mt-2">
-                        <button id="breathe-toggle-btn" class="text-xs px-4 py-1.5 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition shadow-sm">呼吸ガイドを始める</button>
-                    </div>
-
-                    <!-- 心を洗う世界の名画ギャラリー（5選・パブリックドメイン） -->
-                    <div class="mt-4 pt-3 border-t border-gray-200/60 text-left">
-                        <h4 class="font-bold text-gray-700 text-xs mb-1 flex items-center justify-between">
-                            <span>🖼️ 心を洗う名画ギャラリー（5選）</span>
-                            <span class="text-[10px] text-gray-400">タップで鑑賞</span>
-                        </h4>
-                        <p class="text-[11px] text-gray-500 mb-2">美術館所蔵のパブリックドメイン（著作権満了）名画です。心安らぐ色彩を静かに味わってください。</p>
-                        <div class="space-y-3">
-                            <!-- 1 モネ 睡蓮 -->
-                            <div class="bg-white p-2.5 rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-                                <a href="https://commons.wikimedia.org/wiki/File:Claude_Monet_-_Water_Lilies_-_1906,_Ryerson.jpg" target="_blank" rel="noopener" class="block group">
-                                    <img src="./images/art/monet_waterlilies.jpg" alt="モネ 睡蓮" class="w-full h-40 object-cover rounded-lg group-hover:opacity-90 transition" loading="lazy">
-                                    <div class="mt-1.5 flex items-center justify-between">
-                                        <span class="text-xs font-bold text-gray-800">クロード・モネ『睡蓮』</span>
-                                        <span class="text-blue-600 text-[11px]">解説・拡大 ↗</span>
-                                    </div>
-                                </a>
-                                <p class="text-[11px] text-gray-600 mt-1 leading-snug">柔らかな水面と淡い光のグラデーションを見つめていると、自然と呼吸が深くなります。</p>
-                            </div>
-                            <!-- 2 ゴッホ ローヌ川の星月夜 -->
-                            <div class="bg-white p-2.5 rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-                                <a href="https://commons.wikimedia.org/wiki/File:Starry_Night_Over_the_Rhone.jpg" target="_blank" rel="noopener" class="block group">
-                                    <img src="./images/art/gogh_starry_night.jpg" alt="ゴッホ ローヌ川の星月夜" class="w-full h-40 object-cover rounded-lg group-hover:opacity-90 transition" loading="lazy">
-                                    <div class="mt-1.5 flex items-center justify-between">
-                                        <span class="text-xs font-bold text-gray-800">ゴッホ『ローヌ川の星月夜』</span>
-                                        <span class="text-blue-600 text-[11px]">解説・拡大 ↗</span>
-                                    </div>
-                                </a>
-                                <p class="text-[11px] text-gray-600 mt-1 leading-snug">夜空に瞬く温かい星明かりと水面の反射が、孤独な心にそっと寄り添う希望の灯火です。</p>
-                            </div>
-                            <!-- 3 モネ 散歩、日傘をさす女性 -->
-                            <div class="bg-white p-2.5 rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-                                <a href="https://commons.wikimedia.org/wiki/File:Claude_Monet_-_Woman_with_a_Parasol_-_Madame_Monet_and_Her_Son_-_Google_Art_Project.jpg" target="_blank" rel="noopener" class="block group">
-                                    <img src="./images/art/monet_parasol.jpg" alt="モネ 散歩、日傘をさす女性" class="w-full h-40 object-cover rounded-lg group-hover:opacity-90 transition" loading="lazy">
-                                    <div class="mt-1.5 flex items-center justify-between">
-                                        <span class="text-xs font-bold text-gray-800">モネ『散歩、日傘をさす女性』</span>
-                                        <span class="text-blue-600 text-[11px]">解説・拡大 ↗</span>
-                                    </div>
-                                </a>
-                                <p class="text-[11px] text-gray-600 mt-1 leading-snug">風が吹き抜ける緑の草原と爽やかな青空が、胸のつかえをすっきりと吹き飛ばしてくれます。</p>
-                            </div>
-                            <!-- 4 ゴッホ 花咲くアーモンドの木の枝 -->
-                            <div class="bg-white p-2.5 rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-                                <a href="https://commons.wikimedia.org/wiki/File:Vincent_van_Gogh_-_Almond_blossom_-_Google_Art_Project.jpg" target="_blank" rel="noopener" class="block group">
-                                    <img src="./images/art/gogh_almond.jpg" alt="ゴッホ 花咲くアーモンドの木の枝" class="w-full h-40 object-cover rounded-lg group-hover:opacity-90 transition" loading="lazy">
-                                    <div class="mt-1.5 flex items-center justify-between">
-                                        <span class="text-xs font-bold text-gray-800">ゴッホ『花咲くアーモンドの木の枝』</span>
-                                        <span class="text-blue-600 text-[11px]">解説・拡大 ↗</span>
-                                    </div>
-                                </a>
-                                <p class="text-[11px] text-gray-600 mt-1 leading-snug">澄み渡る青空に咲く白い花が、凍てついた心に新しい春と生命力を吹き込んでくれます。</p>
-                            </div>
-                            <!-- 5 フリードリヒ 海辺の僧侶 -->
-                            <div class="bg-white p-2.5 rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-                                <a href="https://commons.wikimedia.org/wiki/File:Caspar_David_Friedrich_-_Der_M%C3%B6nch_am_Meer.jpg" target="_blank" rel="noopener" class="block group">
-                                    <img src="./images/art/friedrich_monk.jpg" alt="フリードリヒ 海辺の僧侶" class="w-full h-40 object-cover rounded-lg group-hover:opacity-90 transition" loading="lazy">
-                                    <div class="mt-1.5 flex items-center justify-between">
-                                        <span class="text-xs font-bold text-gray-800">フリードリヒ『海辺の僧侶』</span>
-                                        <span class="text-blue-600 text-[11px]">解説・拡大 ↗</span>
-                                    </div>
-                                </a>
-                                <p class="text-[11px] text-gray-600 mt-1 leading-snug">果てしない水平線と静かな空を見つめ、日々のちっぽけな悩みから心を解放できます。</p>
-                            </div>
+                        <!-- 2 ゴッホ ローヌ川の星月夜 -->
+                        <div class="bg-white p-2.5 rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                            <a href="https://commons.wikimedia.org/wiki/File:Starry_Night_Over_the_Rhone.jpg" target="_blank" rel="noopener" class="block group">
+                                <img src="./images/art/gogh_starry_night.jpg" alt="ゴッホ ローヌ川の星月夜" class="w-full h-40 object-cover rounded-lg group-hover:opacity-90 transition" loading="lazy">
+                                <div class="mt-1.5 flex items-center justify-between">
+                                    <span class="text-xs font-bold text-gray-800">ゴッホ『ローヌ川の星月夜』</span>
+                                    <span class="text-blue-600 text-[11px]">解説・拡大 ↗</span>
+                                </div>
+                            </a>
+                            <p class="text-[11px] text-gray-600 mt-1 leading-snug">夜空に瞬く温かい星明かりと水面の反射が、孤独な心にそっと寄り添う希望の灯火です。</p>
                         </div>
-                    </div>
-                                </a>
-                                <p class="text-[11px] text-gray-600 mt-1 leading-snug">果てしない水平線と静かな夕暮れを見つめ、日々のちっぽけな悩みから心を解放できます。</p>
-                            </div>
+                        <!-- 3 モネ 散歩、日傘をさす女性 -->
+                        <div class="bg-white p-2.5 rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                            <a href="https://commons.wikimedia.org/wiki/File:Claude_Monet_-_Woman_with_a_Parasol_-_Madame_Monet_and_Her_Son_-_Google_Art_Project.jpg" target="_blank" rel="noopener" class="block group">
+                                <img src="./images/art/monet_parasol.jpg" alt="モネ 散歩、日傘をさす女性" class="w-full h-40 object-cover rounded-lg group-hover:opacity-90 transition" loading="lazy">
+                                <div class="mt-1.5 flex items-center justify-between">
+                                    <span class="text-xs font-bold text-gray-800">モネ『散歩、日傘をさす女性』</span>
+                                    <span class="text-blue-600 text-[11px]">解説・拡大 ↗</span>
+                                </div>
+                            </a>
+                            <p class="text-[11px] text-gray-600 mt-1 leading-snug">風が吹き抜ける緑の草原と爽やかな青空が、胸のつかえをすっきりと吹き飛ばしてくれます。</p>
+                        </div>
+                        <!-- 4 ゴッホ 花咲くアーモンドの木の枝 -->
+                        <div class="bg-white p-2.5 rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                            <a href="https://commons.wikimedia.org/wiki/File:Vincent_van_Gogh_-_Almond_blossom_-_Google_Art_Project.jpg" target="_blank" rel="noopener" class="block group">
+                                <img src="./images/art/gogh_almond.jpg" alt="ゴッホ 花咲くアーモンドの木の枝" class="w-full h-40 object-cover rounded-lg group-hover:opacity-90 transition" loading="lazy">
+                                <div class="mt-1.5 flex items-center justify-between">
+                                    <span class="text-xs font-bold text-gray-800">ゴッホ『花咲くアーモンドの木の枝』</span>
+                                    <span class="text-blue-600 text-[11px]">解説・拡大 ↗</span>
+                                </div>
+                            </a>
+                            <p class="text-[11px] text-gray-600 mt-1 leading-snug">澄み渡る青空に咲く白い花が、凍てついた心に新しい春と生命力を吹き込んでくれます。</p>
+                        </div>
+                        <!-- 5 フリードリヒ 海辺の僧侶 -->
+                        <div class="bg-white p-2.5 rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                            <a href="https://commons.wikimedia.org/wiki/File:Caspar_David_Friedrich_-_Der_M%C3%B6nch_am_Meer.jpg" target="_blank" rel="noopener" class="block group">
+                                <img src="./images/art/friedrich_monk.jpg" alt="フリードリヒ 海辺の僧侶" class="w-full h-40 object-cover rounded-lg group-hover:opacity-90 transition" loading="lazy">
+                                <div class="mt-1.5 flex items-center justify-between">
+                                    <span class="text-xs font-bold text-gray-800">フリードリヒ『海辺の僧侶』</span>
+                                    <span class="text-blue-600 text-[11px]">解説・拡大 ↗</span>
+                                </div>
+                            </a>
+                            <p class="text-[11px] text-gray-600 mt-1 leading-snug">果てしない水平線と静かな空を見つめ、日々のちっぽけな悩みから心を解放できます。</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- 3. 1分瞑想タブ -->
-                <div id="tab-content-meditation" class="hidden space-y-2.5 text-xs text-gray-600">
+                <!-- 3. 瞑想タブ -->
+                <div id="tab-content-meditation" class="hidden space-y-3 text-xs text-gray-600">
+                    <!-- ボックス呼吸法解説 -->
                     <div class="bg-white/80 p-3 rounded-xl border border-gray-100">
                         <h4 class="font-bold text-gray-800 mb-1 flex items-center gap-1">
                             <span>📦</span> ボックス呼吸法（4-4-4-4）
@@ -182,16 +165,24 @@
                             これを3回繰り返すだけで、自律神経がふっと落ち着きます。
                         </p>
                     </div>
-                    <div class="bg-white/80 p-3 rounded-xl border border-gray-100">
-                        <h4 class="font-bold text-gray-800 mb-1 flex items-center gap-1">
-                            <span>🌱</span> 五感のグラウンディング（今ここに戻る）
+
+                    <!-- 呼吸ガイドサークル（瞑想タブへ移動） -->
+                    <div class="bg-white/80 p-3.5 rounded-xl border border-gray-100 text-center">
+                        <h4 class="font-bold text-gray-800 mb-1 flex items-center justify-center gap-1">
+                            <span>⭕</span> 呼吸リズムガイド
                         </h4>
-                        <p class="leading-relaxed text-gray-600">
-                            不安で胸がいっぱいの時は、「部屋の中に見える青いものを3つ探す」「手のひらの温かさを感じる」など、体の感覚に意識を戻してみてください。
-                        </p>
+                        <p class="text-xs text-gray-500 mb-2">光の円のリズムに合わせて、ゆっくり息を吸ったり吐いたりしてみましょう。</p>
+                        <div class="relative w-40 h-40 mx-auto flex items-center justify-center my-2">
+                            <div id="breathe-circle" class="w-24 h-24 rounded-full bg-gradient-to-tr from-cyan-400 to-blue-500 opacity-80 shadow-lg shadow-blue-300/50 flex items-center justify-center text-white font-bold text-sm transition-all duration-[4000ms] ease-in-out">
+                                <span id="breathe-text">準備</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-center mt-2">
+                            <button id="breathe-toggle-btn" class="text-xs px-4 py-1.5 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition shadow-sm">呼吸ガイドを始める</button>
+                        </div>
                     </div>
 
-                    <!-- YouTube厳選瞑想ガイド（5選） -->
+                    <!-- YouTube厳選誘導瞑想（5選） -->
                     <div class="mt-4 pt-3 border-t border-gray-200/60">
                         <h4 class="font-bold text-gray-700 text-xs mb-2 flex items-center justify-between">
                             <span>🧘 おすすめ誘導瞑想ガイド（5選）</span>
@@ -235,6 +226,61 @@
                             </a>
                         </div>
                     </div>
+                </div>
+
+                <!-- 4. 心の応急手当（グラウンディング・今ここリセット）タブ -->
+                <div id="tab-content-grounding" class="hidden space-y-3 text-xs text-gray-600">
+                    <div class="bg-emerald-50/80 p-3 rounded-xl border border-emerald-200/70">
+                        <h4 class="font-bold text-emerald-900 mb-1 flex items-center gap-1.5 text-xs">
+                            <span>🌱</span> 五感のグラウンディングとは？
+                        </h4>
+                        <p class="leading-relaxed text-emerald-800 text-[11px]">
+                            パニック、強い不安、怒りで頭がいっぱいになった時、五感（視覚・触覚・聴覚など）を使って意識を「今ここにある身体」に強制着地（アンカー）させ、感情の暴走をストップさせる心理学の緊急セルフケア技法です。
+                        </p>
+                    </div>
+
+                    <!-- 5-4-3-2-1 リセットワーク -->
+                    <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm space-y-2.5">
+                        <h4 class="font-bold text-gray-800 text-xs flex items-center justify-between border-b pb-1">
+                            <span>👣 5-4-3-2-1 リセット法（実践ステップ）</span>
+                            <span class="text-[10px] text-emerald-600 font-normal">上から順に見つけましょう</span>
+                        </h4>
+                        
+                        <div class="space-y-1.5 text-[11px]">
+                            <div class="p-1.5 bg-gray-50 rounded-lg flex items-start gap-2">
+                                <span class="font-bold text-emerald-700 w-5">5つ</span>
+                                <div><span class="font-bold text-gray-800">👁️ 目に見えるものを探す</span><br><span class="text-gray-500">部屋にある青いもの、時計の文字盤、窓の外の木など</span></div>
+                            </div>
+                            <div class="p-1.5 bg-gray-50 rounded-lg flex items-start gap-2">
+                                <span class="font-bold text-emerald-700 w-5">4つ</span>
+                                <div><span class="font-bold text-gray-800">🖐️ 手や肌で触れて感じる</span><br><span class="text-gray-500">机のひんやり感、服の肌触り、足の裏の床の感触など</span></div>
+                            </div>
+                            <div class="p-1.5 bg-gray-50 rounded-lg flex items-start gap-2">
+                                <span class="font-bold text-emerald-700 w-5">3つ</span>
+                                <div><span class="font-bold text-gray-800">👂 耳に聞こえる音を聞く</span><br><span class="text-gray-500">エアコンの動作音、遠くの車の走行音、自分の呼吸音など</span></div>
+                            </div>
+                            <div class="p-1.5 bg-gray-50 rounded-lg flex items-start gap-2">
+                                <span class="font-bold text-emerald-700 w-5">2つ</span>
+                                <div><span class="font-bold text-gray-800">👃 鼻で香りを感じる</span><br><span class="text-gray-500">室内の空気の匂い、自分の服や手のひらの香りなど</span></div>
+                            </div>
+                            <div class="p-1.5 bg-gray-50 rounded-lg flex items-start gap-2">
+                                <span class="font-bold text-emerald-700 w-5">1つ</span>
+                                <div><span class="font-bold text-gray-800">👅 口の中の味・感覚を確かめる</span><br><span class="text-gray-500">お水をひとくち飲む、唾液の感覚を確かめるなど</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 身体感覚のクイックリセット -->
+                    <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm space-y-2">
+                        <h4 class="font-bold text-gray-800 text-xs border-b pb-1">
+                            <span>🧊 身体のクイックリセット法</span>
+                        </h4>
+                        <div class="space-y-1.5 text-[11px] leading-relaxed text-gray-600">
+                            <p><span class="font-bold text-gray-800">・冷水リセット:</span> 洗面所で冷たい水で手を洗うか、冷たい水を1杯ゆっくり飲むことで、副交感神経の迷走神経反射が刺激され、動悸が落ち着きます。</p>
+                            <p><span class="font-bold text-gray-800">・握ってパッと開く:</span> 両手をギュッと力いっぱい5秒握りしめたあと、息を吐きながら「パッ」と脱力します（漸進性筋弛緩法）。</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         
