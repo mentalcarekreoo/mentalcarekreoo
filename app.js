@@ -142,6 +142,20 @@ function displayResult(data) {
     document.getElementById("res-separation").innerText = data.separation;
     document.getElementById("res-compassion").innerText = data.compassion;
     document.getElementById("res-phrase").innerText = data.phrase;
+
+    // おすすめの書籍・映画の表示
+    if (data.recommendation && data.recommendation.title) {
+        const rec = data.recommendation;
+        const recWrap = document.getElementById("res-rec-wrap");
+        if (recWrap) {
+            recWrap.classList.remove("hidden");
+            document.getElementById("res-rec-title").innerText = '『' + rec.title + '』';
+            document.getElementById("res-rec-type").innerText = rec.type || "おすすめ作品";
+            document.getElementById("res-rec-reason").innerText = rec.reason || "";
+            document.getElementById("res-rec-google").href = rec.searchUrl || ('https://www.google.com/search?q=' + encodeURIComponent(rec.title));
+            document.getElementById("res-rec-amazon").href = rec.amazonUrl || ('https://www.amazon.co.jp/s?k=' + encodeURIComponent(rec.title));
+        }
+    }
     
     const resultArea = document.getElementById("result-area");
     resultArea.classList.remove("hidden");
