@@ -276,13 +276,6 @@ function initShelterMenu() {
         }
     });
 
-    // サウンド選択・再生
-    document.getElementById("btn-sound-rain")?.addEventListener("click", () => AudioModule.selectSound("rain"));
-    document.getElementById("btn-sound-wave")?.addEventListener("click", () => AudioModule.selectSound("wave"));
-    document.getElementById("btn-sound-528")?.addEventListener("click", () => AudioModule.selectSound("528"));
-    document.getElementById("sound-play-toggle")?.addEventListener("click", () => AudioModule.togglePlay());
-    document.getElementById("sound-volume")?.addEventListener("input", (e) => AudioModule.setVolume(parseFloat(e.target.value)));
-
     // 呼吸ガイド
     document.getElementById("breathe-toggle-btn")?.addEventListener("click", () => BreatheGuide.toggle());
 }
