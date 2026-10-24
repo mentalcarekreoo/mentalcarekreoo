@@ -17,139 +17,147 @@
         <h1 class="text-2xl font-bold text-center text-gray-700 mb-4">デジタル・マインド・シェルター</h1>
         
         <!-- 心の休息メニュー（開閉式シェルターエリア） -->
-        <div class="mb-6 bg-white/70 border border-white/90 rounded-2xl p-3.5 shadow-sm backdrop-blur-sm">
+        <div class="mb-6 bg-slate-50/70 border border-slate-200/60 rounded-xl p-3">
             <button id="menu-toggle-btn" class="w-full flex items-center justify-between text-left text-sm font-bold text-gray-700 hover:text-gray-900 transition">
                 <span class="flex items-center gap-2">
                     <span class="text-base">🍃</span>
                     <span>五感で心を整える休息メニュー</span>
-                    <span class="text-xs font-normal text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">新機能</span>
+                    <span class="text-[11px] font-normal text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">新機能</span>
                 </span>
                 <span id="menu-toggle-icon" class="transform transition-transform duration-300 text-gray-400 text-xs">▼ 開く</span>
             </button>
 
             <!-- 展開されるメニューパネル -->
-            <div id="shelter-menu-panel" class="hidden mt-3 pt-3 border-t border-gray-200/60">
+            <div id="shelter-menu-panel" class="hidden mt-3 pt-3 border-t border-slate-200/60">
                 <!-- タブ切り替えボタン（4つの休息モード） -->
-                <div class="grid grid-cols-4 gap-1 rounded-xl bg-gray-100/90 p-1 mb-3 text-xs font-bold text-gray-600">
-                    <button id="tab-btn-sound" class="py-1.5 rounded-lg text-center bg-white text-gray-800 shadow-sm transition truncate">🎵 音楽</button>
-                    <button id="tab-btn-art" class="py-1.5 rounded-lg text-center transition truncate text-gray-500 hover:text-gray-700">🎨 アート</button>
-                    <button id="tab-btn-meditation" class="py-1.5 rounded-lg text-center transition truncate text-gray-500 hover:text-gray-700">🧘 瞑想</button>
-                    <button id="tab-btn-grounding" class="py-1.5 rounded-lg text-center transition truncate text-gray-500 hover:text-gray-700">🌱 応急手当</button>
+                <div class="grid grid-cols-4 gap-1 rounded-lg bg-gray-200/60 p-1 mb-3 text-xs font-bold text-gray-600">
+                    <button id="tab-btn-sound" class="py-1.5 rounded-md text-center bg-white text-gray-800 shadow-xs transition truncate">🎵 音楽</button>
+                    <button id="tab-btn-art" class="py-1.5 rounded-md text-center transition truncate text-gray-500 hover:text-gray-700">🎨 アート</button>
+                    <button id="tab-btn-meditation" class="py-1.5 rounded-md text-center transition truncate text-gray-500 hover:text-gray-700">🧘 瞑想</button>
+                    <button id="tab-btn-grounding" class="py-1.5 rounded-md text-center transition truncate text-gray-500 hover:text-gray-700">🌱 応急手当</button>
                 </div>
 
                 <!-- 1. 音楽タブ -->
-                <div id="tab-content-sound" class="space-y-3">
-                    <div>
-                        <h4 class="font-bold text-gray-700 text-xs mb-2 flex items-center justify-between">
-                            <span>🎧 心をほぐす厳選ヒーリング音楽（5選）</span>
-                            <span class="text-[10px] text-gray-400">YouTubeで聴く</span>
-                        </h4>
-                        <div class="space-y-2">
-                            <a href="https://www.youtube.com/results?search_query=528Hz+ヒーリング+睡眠+ピアノ" target="_blank" rel="noopener" class="block bg-white p-2.5 rounded-xl border border-gray-100 hover:border-blue-300 hover:shadow-sm transition">
-                                <div class="flex items-center justify-between text-xs font-bold text-gray-800">
-                                    <span>✨ 528Hz ソルフェジオ周波数のピアノ</span>
-                                    <span class="text-blue-600 text-[11px]">再生 ↗</span>
-                                </div>
-                                <p class="text-[11px] text-gray-500 mt-0.5 leading-snug">過緊張をほどき、疲れた自律神経を優しく修復する穏やかな周波数のピアノ旋律です。</p>
-                                <div class="mt-1.5 pt-1.5 border-t border-gray-100 text-[10px] text-blue-800 bg-blue-50/70 p-1.5 rounded-lg leading-relaxed">
-                                    <span class="font-bold">💡 なぜ528Hzなのか？</span><br>
-                                    古くから「奇跡・愛の周波数」と呼ばれ、ストレスホルモン（コルチゾール）を減少させ、副交感神経を優位にして心身の修復を促す音として科学的にも注目されている周波数です。
-                                </div>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=屋久島+自然音+清流+睡眠" target="_blank" rel="noopener" class="block bg-white p-2.5 rounded-xl border border-gray-100 hover:border-blue-300 hover:shadow-sm transition">
-                                <div class="flex items-center justify-between text-xs font-bold text-gray-800">
-                                    <span>🌲 屋久島の深い森と清流のせせらぎ</span>
-                                    <span class="text-blue-600 text-[11px]">再生 ↗</span>
-                                </div>
-                                <p class="text-[11px] text-gray-500 mt-0.5 leading-snug">目を閉じると太古の深い森に包まれ、脳内の反芻思考がすっと鎮まります。</p>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=焚き火+睡眠+癒やし音" target="_blank" rel="noopener" class="block bg-white p-2.5 rounded-xl border border-gray-100 hover:border-blue-300 hover:shadow-sm transition">
-                                <div class="flex items-center justify-between text-xs font-bold text-gray-800">
-                                    <span>🔥 心が温まる静かな焚き火の音</span>
-                                    <span class="text-blue-600 text-[11px]">再生 ↗</span>
-                                </div>
-                                <p class="text-[11px] text-gray-500 mt-0.5 leading-snug">パチパチとはぜる炎の温もりが、こわばった心の緊張をじんわり解きほぐします。</p>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=深海+アンビエント+睡眠+リラックス" target="_blank" rel="noopener" class="block bg-white p-2.5 rounded-xl border border-gray-100 hover:border-blue-300 hover:shadow-sm transition">
-                                <div class="flex items-center justify-between text-xs font-bold text-gray-800">
-                                    <span>🌊 思考を止める深海アンビエント</span>
-                                    <span class="text-blue-600 text-[11px]">再生 ↗</span>
-                                </div>
-                                <p class="text-[11px] text-gray-500 mt-0.5 leading-snug">深い海の底に身を委ねるような静けさで、考えすぎを優しくストップさせます。</p>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=サティ+ジムノペディ+ピアノ+リラックス" target="_blank" rel="noopener" class="block bg-white p-2.5 rounded-xl border border-gray-100 hover:border-blue-300 hover:shadow-sm transition">
-                                <div class="flex items-center justify-between text-xs font-bold text-gray-800">
-                                    <span>🎹 エリック・サティ『ジムノペディ』</span>
-                                    <span class="text-blue-600 text-[11px]">再生 ↗</span>
-                                </div>
-                                <p class="text-[11px] text-gray-500 mt-0.5 leading-snug">音と音の間の静かな余白が、せわしない日常の緊張をほどいてくれます。</p>
-                            </a>
-                        </div>
+                <div id="tab-content-sound" class="space-y-1">
+                    <div class="flex items-center justify-between text-xs font-bold text-gray-700 pb-1.5 px-0.5">
+                        <span>🎧 心をほぐす厳選ヒーリング音楽（5選）</span>
+                        <span class="text-[10px] text-gray-400 font-normal">YouTubeで聴く</span>
+                    </div>
+                    <div class="divide-y divide-gray-100 bg-white rounded-xl shadow-xs border border-gray-200/50 overflow-hidden">
+                        <a href="https://www.youtube.com/results?search_query=528Hz+ヒーリング+睡眠+ピアノ" target="_blank" rel="noopener" class="block p-3 hover:bg-slate-50 transition">
+                            <div class="flex items-center justify-between text-xs font-bold text-gray-800">
+                                <span>✨ 528Hz ソルフェジオ周波数のピアノ</span>
+                                <span class="text-blue-600 text-[11px] font-normal">再生 ↗</span>
+                            </div>
+                            <p class="text-[11px] text-gray-500 mt-1 leading-snug">過緊張をほどき、疲れた自律神経を優しく修復する穏やかな周波数のピアノ旋律です。</p>
+                            <div class="mt-2 pl-2.5 border-l-2 border-blue-400 text-[10.5px] text-blue-900 leading-relaxed bg-blue-50/40 py-1 pr-1.5 rounded-r">
+                                <span class="font-bold text-blue-700">💡 なぜ528Hzなのか？</span><br>
+                                古くから「奇跡・愛の周波数」と呼ばれ、ストレスホルモン（コルチゾール）を減少させ、副交感神経を優位にして心身の修復を促す音として科学的にも注目されています。
+                            </div>
+                        </a>
+                        <a href="https://www.youtube.com/results?search_query=屋久島+自然音+清流+睡眠" target="_blank" rel="noopener" class="block p-3 hover:bg-slate-50 transition">
+                            <div class="flex items-center justify-between text-xs font-bold text-gray-800">
+                                <span>🌲 屋久島の深い森と清流のせせらぎ</span>
+                                <span class="text-blue-600 text-[11px] font-normal">再生 ↗</span>
+                            </div>
+                            <p class="text-[11px] text-gray-500 mt-1 leading-snug">目を閉じると太古の深い森に包まれ、脳内の反芻思考がすっと鎮まります。</p>
+                        </a>
+                        <a href="https://www.youtube.com/results?search_query=焚き火+睡眠+癒やし音" target="_blank" rel="noopener" class="block p-3 hover:bg-slate-50 transition">
+                            <div class="flex items-center justify-between text-xs font-bold text-gray-800">
+                                <span>🔥 心が温まる静かな焚き火の音</span>
+                                <span class="text-blue-600 text-[11px] font-normal">再生 ↗</span>
+                            </div>
+                            <p class="text-[11px] text-gray-500 mt-1 leading-snug">パチパチとはぜる炎の温もりが、こわばった心の緊張をじんわり解きほぐします。</p>
+                        </a>
+                        <a href="https://www.youtube.com/results?search_query=深海+アンビエント+睡眠+リラックス" target="_blank" rel="noopener" class="block p-3 hover:bg-slate-50 transition">
+                            <div class="flex items-center justify-between text-xs font-bold text-gray-800">
+                                <span>🌊 思考を止める深海アンビエント</span>
+                                <span class="text-blue-600 text-[11px] font-normal">再生 ↗</span>
+                            </div>
+                            <p class="text-[11px] text-gray-500 mt-1 leading-snug">深い海の底に身を委ねるような静けさで、考えすぎを優しくストップさせます。</p>
+                        </a>
+                        <a href="https://www.youtube.com/results?search_query=サティ+ジムノペディ+ピアノ+リラックス" target="_blank" rel="noopener" class="block p-3 hover:bg-slate-50 transition">
+                            <div class="flex items-center justify-between text-xs font-bold text-gray-800">
+                                <span>🎹 エリック・サティ『ジムノペディ』</span>
+                                <span class="text-blue-600 text-[11px] font-normal">再生 ↗</span>
+                            </div>
+                            <p class="text-[11px] text-gray-500 mt-1 leading-snug">音と音の間の静かな余白が、せわしない日常の緊張をほどいてくれます。</p>
+                        </a>
                     </div>
                 </div>
 
                 <!-- 2. アートタブ -->
                 <div id="tab-content-art" class="hidden text-left py-1">
-                    <h4 class="font-bold text-gray-700 text-xs mb-1 flex items-center justify-between">
+                    <div class="flex items-center justify-between text-xs font-bold text-gray-700 mb-1 px-0.5">
                         <span>🖼️ 心を洗う名画ギャラリー（5選）</span>
-                        <span class="text-[10px] text-gray-400">タップで鑑賞</span>
-                    </h4>
-                    <p class="text-[11px] text-gray-500 mb-2">美術館所蔵のパブリックドメイン（著作権満了）名画です。心安らぐ色彩を静かに味わってください。</p>
-                    <div class="space-y-3">
+                        <span class="text-[10px] text-gray-400 font-normal">タップで鑑賞</span>
+                    </div>
+                    <p class="text-[11px] text-gray-500 mb-3 px-0.5 leading-relaxed">美術館所蔵のパブリックドメイン（著作権満了）名画です。心安らぐ色彩を静かに味わってください。</p>
+                    <div class="space-y-3.5">
                         <!-- 1 モネ 睡蓮 -->
-                        <div class="bg-white p-2.5 rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                        <div class="bg-white rounded-xl border border-gray-200/50 shadow-xs overflow-hidden">
                             <a href="https://commons.wikimedia.org/wiki/File:Claude_Monet_-_Water_Lilies_-_1906,_Ryerson.jpg" target="_blank" rel="noopener" class="block group">
-                                <img src="./images/art/monet_waterlilies.jpg" alt="モネ 睡蓮" class="w-full h-52 object-contain bg-slate-50/70 rounded-lg group-hover:opacity-95 transition" loading="lazy">
-                                <div class="mt-1.5 flex items-center justify-between">
-                                    <span class="text-xs font-bold text-gray-800">クロード・モネ『睡蓮』</span>
-                                    <span class="text-blue-600 text-[11px]">解説・拡大 ↗</span>
+                                <img src="./images/art/monet_waterlilies.jpg" alt="モネ 睡蓮" class="w-full h-52 object-contain bg-slate-50/70 group-hover:opacity-95 transition" loading="lazy">
+                                <div class="p-3">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-bold text-gray-800">クロード・モネ『睡蓮』</span>
+                                        <span class="text-blue-600 text-[11px] font-normal">解説・拡大 ↗</span>
+                                    </div>
+                                    <p class="text-[11px] text-gray-600 mt-1 leading-snug">柔らかな水面と淡い光のグラデーションを見つめていると、自然と呼吸が深くなります。</p>
                                 </div>
                             </a>
-                            <p class="text-[11px] text-gray-600 mt-1 leading-snug">柔らかな水面と淡い光のグラデーションを見つめていると、自然と呼吸が深くなります。</p>
                         </div>
                         <!-- 2 ゴッホ ローヌ川の星月夜 -->
-                        <div class="bg-white p-2.5 rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                        <div class="bg-white rounded-xl border border-gray-200/50 shadow-xs overflow-hidden">
                             <a href="https://commons.wikimedia.org/wiki/File:Starry_Night_Over_the_Rhone.jpg" target="_blank" rel="noopener" class="block group">
-                                <img src="./images/art/gogh_starry_night.jpg" alt="ゴッホ ローヌ川の星月夜" class="w-full h-52 object-contain bg-slate-50/70 rounded-lg group-hover:opacity-95 transition" loading="lazy">
-                                <div class="mt-1.5 flex items-center justify-between">
-                                    <span class="text-xs font-bold text-gray-800">ゴッホ『ローヌ川の星月夜』</span>
-                                    <span class="text-blue-600 text-[11px]">解説・拡大 ↗</span>
+                                <img src="./images/art/gogh_starry_night.jpg" alt="ゴッホ ローヌ川の星月夜" class="w-full h-52 object-contain bg-slate-50/70 group-hover:opacity-95 transition" loading="lazy">
+                                <div class="p-3">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-bold text-gray-800">ゴッホ『ローヌ川の星月夜』</span>
+                                        <span class="text-blue-600 text-[11px] font-normal">解説・拡大 ↗</span>
+                                    </div>
+                                    <p class="text-[11px] text-gray-600 mt-1 leading-snug">夜空に瞬く温かい星明かりと水面の反射が、孤独な心にそっと寄り添う希望の灯火です。</p>
                                 </div>
                             </a>
-                            <p class="text-[11px] text-gray-600 mt-1 leading-snug">夜空に瞬く温かい星明かりと水面の反射が、孤独な心にそっと寄り添う希望の灯火です。</p>
                         </div>
                         <!-- 3 モネ 散歩、日傘をさす女性 -->
-                        <div class="bg-white p-2.5 rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                        <div class="bg-white rounded-xl border border-gray-200/50 shadow-xs overflow-hidden">
                             <a href="https://commons.wikimedia.org/wiki/File:Claude_Monet_-_Woman_with_a_Parasol_-_Madame_Monet_and_Her_Son_-_Google_Art_Project.jpg" target="_blank" rel="noopener" class="block group">
-                                <img src="./images/art/monet_parasol.jpg" alt="モネ 散歩、日傘をさす女性" class="w-full h-52 object-contain bg-slate-50/70 rounded-lg group-hover:opacity-95 transition" loading="lazy">
-                                <div class="mt-1.5 flex items-center justify-between">
-                                    <span class="text-xs font-bold text-gray-800">モネ『散歩、日傘をさす女性』</span>
-                                    <span class="text-blue-600 text-[11px]">解説・拡大 ↗</span>
+                                <img src="./images/art/monet_parasol.jpg" alt="モネ 散歩、日傘をさす女性" class="w-full h-52 object-contain bg-slate-50/70 group-hover:opacity-95 transition" loading="lazy">
+                                <div class="p-3">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-bold text-gray-800">モネ『散歩、日傘をさす女性』</span>
+                                        <span class="text-blue-600 text-[11px] font-normal">解説・拡大 ↗</span>
+                                    </div>
+                                    <p class="text-[11px] text-gray-600 mt-1 leading-snug">風が吹き抜ける緑の草原と爽やかな青空が、胸のつかえをすっきりと吹き飛ばしてくれます。</p>
                                 </div>
                             </a>
-                            <p class="text-[11px] text-gray-600 mt-1 leading-snug">風が吹き抜ける緑の草原と爽やかな青空が、胸のつかえをすっきりと吹き飛ばしてくれます。</p>
                         </div>
                         <!-- 4 ゴッホ 花咲くアーモンドの木の枝 -->
-                        <div class="bg-white p-2.5 rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                        <div class="bg-white rounded-xl border border-gray-200/50 shadow-xs overflow-hidden">
                             <a href="https://commons.wikimedia.org/wiki/File:Vincent_van_Gogh_-_Almond_blossom_-_Google_Art_Project.jpg" target="_blank" rel="noopener" class="block group">
-                                <img src="./images/art/gogh_almond.jpg" alt="ゴッホ 花咲くアーモンドの木の枝" class="w-full h-52 object-contain bg-slate-50/70 rounded-lg group-hover:opacity-95 transition" loading="lazy">
-                                <div class="mt-1.5 flex items-center justify-between">
-                                    <span class="text-xs font-bold text-gray-800">ゴッホ『花咲くアーモンドの木の枝』</span>
-                                    <span class="text-blue-600 text-[11px]">解説・拡大 ↗</span>
+                                <img src="./images/art/gogh_almond.jpg" alt="ゴッホ 花咲くアーモンドの木の枝" class="w-full h-52 object-contain bg-slate-50/70 group-hover:opacity-95 transition" loading="lazy">
+                                <div class="p-3">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-bold text-gray-800">ゴッホ『花咲くアーモンドの木の枝』</span>
+                                        <span class="text-blue-600 text-[11px] font-normal">解説・拡大 ↗</span>
+                                    </div>
+                                    <p class="text-[11px] text-gray-600 mt-1 leading-snug">澄み渡る青空に咲く白い花が、凍てついた心に新しい春と生命力を吹き込んでくれます。</p>
                                 </div>
                             </a>
-                            <p class="text-[11px] text-gray-600 mt-1 leading-snug">澄み渡る青空に咲く白い花が、凍てついた心に新しい春と生命力を吹き込んでくれます。</p>
                         </div>
                         <!-- 5 フリードリヒ 海辺の僧侶 -->
-                        <div class="bg-white p-2.5 rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                        <div class="bg-white rounded-xl border border-gray-200/50 shadow-xs overflow-hidden">
                             <a href="https://commons.wikimedia.org/wiki/File:Caspar_David_Friedrich_-_Der_M%C3%B6nch_am_Meer.jpg" target="_blank" rel="noopener" class="block group">
-                                <img src="./images/art/friedrich_monk.jpg" alt="フリードリヒ 海辺の僧侶" class="w-full h-52 object-contain bg-slate-50/70 rounded-lg group-hover:opacity-95 transition" loading="lazy">
-                                <div class="mt-1.5 flex items-center justify-between">
-                                    <span class="text-xs font-bold text-gray-800">フリードリヒ『海辺の僧侶』</span>
-                                    <span class="text-blue-600 text-[11px]">解説・拡大 ↗</span>
+                                <img src="./images/art/friedrich_monk.jpg" alt="フリードリヒ 海辺の僧侶" class="w-full h-52 object-contain bg-slate-50/70 group-hover:opacity-95 transition" loading="lazy">
+                                <div class="p-3">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-bold text-gray-800">フリードリヒ『海辺の僧侶』</span>
+                                        <span class="text-blue-600 text-[11px] font-normal">解説・拡大 ↗</span>
+                                    </div>
+                                    <p class="text-[11px] text-gray-600 mt-1 leading-snug">果てしない水平線と静かな空を見つめ、日々のちっぽけな悩みから心を解放できます。</p>
                                 </div>
                             </a>
-                            <p class="text-[11px] text-gray-600 mt-1 leading-snug">果てしない水平線と静かな空を見つめ、日々のちっぽけな悩みから心を解放できます。</p>
                         </div>
                     </div>
                 </div>
@@ -157,11 +165,11 @@
                 <!-- 3. 瞑想タブ -->
                 <div id="tab-content-meditation" class="hidden space-y-3 text-xs text-gray-600">
                     <!-- ボックス呼吸法解説 -->
-                    <div class="bg-white/80 p-3 rounded-xl border border-gray-100">
-                        <h4 class="font-bold text-gray-800 mb-1 flex items-center gap-1">
+                    <div class="bg-white p-3 rounded-xl border border-gray-200/50 shadow-xs">
+                        <h4 class="font-bold text-gray-800 mb-1 flex items-center gap-1.5">
                             <span>📦</span> ボックス呼吸法（4-4-4-4）
                         </h4>
-                        <p class="leading-relaxed text-gray-600">
+                        <p class="leading-relaxed text-gray-600 text-[11px]">
                             1. 4秒かけて鼻からゆっくり息を吸う<br>
                             2. 4秒間息を止める（満ちた感覚を味わう）<br>
                             3. 4秒かけて口から細く長く息を吐き出す<br>
@@ -170,63 +178,63 @@
                         </p>
                     </div>
 
-                    <!-- 呼吸ガイドサークル（瞑想タブへ移動） -->
-                    <div class="bg-white/80 p-3.5 rounded-xl border border-gray-100 text-center">
-                        <h4 class="font-bold text-gray-800 mb-1 flex items-center justify-center gap-1">
+                    <!-- 呼吸ガイドサークル -->
+                    <div class="bg-white p-3.5 rounded-xl border border-gray-200/50 shadow-xs text-center">
+                        <h4 class="font-bold text-gray-800 mb-1 flex items-center justify-center gap-1.5">
                             <span>⭕</span> 呼吸リズムガイド
                         </h4>
-                        <p class="text-xs text-gray-500 mb-2">光の円のリズムに合わせて、ゆっくり息を吸ったり吐いたりしてみましょう。</p>
-                        <div class="relative w-40 h-40 mx-auto flex items-center justify-center my-2">
-                            <div id="breathe-circle" class="w-24 h-24 rounded-full bg-gradient-to-tr from-cyan-400 to-blue-500 opacity-80 shadow-lg shadow-blue-300/50 flex items-center justify-center text-white font-bold text-sm transition-all duration-[4000ms] ease-in-out">
+                        <p class="text-[11px] text-gray-500 mb-2">光の円のリズムに合わせて、ゆっくり息を吸ったり吐いたりしてみましょう。</p>
+                        <div class="relative w-36 h-36 mx-auto flex items-center justify-center my-2">
+                            <div id="breathe-circle" class="w-24 h-24 rounded-full bg-gradient-to-tr from-cyan-400 to-blue-500 opacity-80 shadow-md shadow-blue-300/50 flex items-center justify-center text-white font-bold text-sm transition-all duration-[4000ms] ease-in-out">
                                 <span id="breathe-text">準備</span>
                             </div>
                         </div>
                         <div class="flex justify-center mt-2">
-                            <button id="breathe-toggle-btn" class="text-xs px-4 py-1.5 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition shadow-sm">呼吸ガイドを始める</button>
+                            <button id="breathe-toggle-btn" class="text-xs px-4 py-1.5 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition shadow-xs">呼吸ガイドを始める</button>
                         </div>
                     </div>
 
                     <!-- YouTube厳選誘導瞑想（5選） -->
-                    <div class="mt-4 pt-3 border-t border-gray-200/60">
-                        <h4 class="font-bold text-gray-700 text-xs mb-2 flex items-center justify-between">
+                    <div class="space-y-1">
+                        <div class="flex items-center justify-between text-xs font-bold text-gray-700 pb-1 px-0.5">
                             <span>🧘 おすすめ誘導瞑想ガイド（5選）</span>
-                            <span class="text-[10px] text-gray-400">YouTubeで観る</span>
-                        </h4>
-                        <div class="space-y-2">
-                            <a href="https://www.youtube.com/results?search_query=3分+マインドフルネス+呼吸瞑想+初心者" target="_blank" rel="noopener" class="block bg-white p-2.5 rounded-xl border border-gray-100 hover:border-emerald-300 hover:shadow-sm transition">
+                            <span class="text-[10px] text-gray-400 font-normal">YouTubeで観る</span>
+                        </div>
+                        <div class="divide-y divide-gray-100 bg-white rounded-xl shadow-xs border border-gray-200/50 overflow-hidden">
+                            <a href="https://www.youtube.com/results?search_query=3分+マインドフルネス+呼吸瞑想+初心者" target="_blank" rel="noopener" class="block p-3 hover:bg-slate-50 transition">
                                 <div class="flex items-center justify-between text-xs font-bold text-gray-800">
                                     <span>🌱 初心者向け 3分間呼吸瞑想</span>
-                                    <span class="text-emerald-600 text-[11px]">視聴 ↗</span>
+                                    <span class="text-emerald-600 text-[11px] font-normal">視聴 ↗</span>
                                 </div>
-                                <p class="text-[11px] text-gray-500 mt-0.5 leading-snug">今この瞬間の呼吸の感覚に意識を向け、ぐるぐる回る思考（反芻）を止める基本の3分間です。</p>
+                                <p class="text-[11px] text-gray-500 mt-1 leading-snug">今この瞬間の呼吸の感覚に意識を向け、ぐるぐる回る思考（反芻）を止める基本の3分間です。</p>
                             </a>
-                            <a href="https://www.youtube.com/results?search_query=寝たまま+睡眠導入+誘導瞑想+マインドフルネス" target="_blank" rel="noopener" class="block bg-white p-2.5 rounded-xl border border-gray-100 hover:border-emerald-300 hover:shadow-sm transition">
+                            <a href="https://www.youtube.com/results?search_query=寝たまま+睡眠導入+誘導瞑想+マインドフルネス" target="_blank" rel="noopener" class="block p-3 hover:bg-slate-50 transition">
                                 <div class="flex items-center justify-between text-xs font-bold text-gray-800">
                                     <span>🌙 寝たまま聴くだけ 睡眠導入瞑想</span>
-                                    <span class="text-emerald-600 text-[11px]">視聴 ↗</span>
+                                    <span class="text-emerald-600 text-[11px] font-normal">視聴 ↗</span>
                                 </div>
-                                <p class="text-[11px] text-gray-500 mt-0.5 leading-snug">横たわったまま声の誘導に耳を傾けるだけで、気づけば安らかな眠りへと誘われます。</p>
+                                <p class="text-[11px] text-gray-500 mt-1 leading-snug">横たわったまま声の誘導に耳を傾けるだけで、気づけば安らかな眠りへと誘われます。</p>
                             </a>
-                            <a href="https://www.youtube.com/results?search_query=ボックス呼吸法+4秒+自律神経" target="_blank" rel="noopener" class="block bg-white p-2.5 rounded-xl border border-gray-100 hover:border-emerald-300 hover:shadow-sm transition">
+                            <a href="https://www.youtube.com/results?search_query=ボックス呼吸法+4秒+自律神経" target="_blank" rel="noopener" class="block p-3 hover:bg-slate-50 transition">
                                 <div class="flex items-center justify-between text-xs font-bold text-gray-800">
                                     <span>📦 自律神経を整えるボックス呼吸法</span>
-                                    <span class="text-emerald-600 text-[11px]">視聴 ↗</span>
+                                    <span class="text-emerald-600 text-[11px] font-normal">視聴 ↗</span>
                                 </div>
-                                <p class="text-[11px] text-gray-500 mt-0.5 leading-snug">画面のリズムに合わせて吸う・止める・吐くだけで、動悸や過緊張を鎮める米海軍式の呼吸法です。</p>
+                                <p class="text-[11px] text-gray-500 mt-1 leading-snug">画面のリズムに合わせて吸う・止める・吐くだけで、動悸や過緊張を鎮める米海軍式の呼吸法です。</p>
                             </a>
-                            <a href="https://www.youtube.com/results?search_query=ボディスキャン瞑想+ガイド" target="_blank" rel="noopener" class="block bg-white p-2.5 rounded-xl border border-gray-100 hover:border-emerald-300 hover:shadow-sm transition">
+                            <a href="https://www.youtube.com/results?search_query=ボディスキャン瞑想+ガイド" target="_blank" rel="noopener" class="block p-3 hover:bg-slate-50 transition">
                                 <div class="flex items-center justify-between text-xs font-bold text-gray-800">
                                     <span>💆 全身の力を抜くボディスキャン瞑想</span>
-                                    <span class="text-emerald-600 text-[11px]">視聴 ↗</span>
+                                    <span class="text-emerald-600 text-[11px] font-normal">視聴 ↗</span>
                                 </div>
-                                <p class="text-[11px] text-gray-500 mt-0.5 leading-snug">頭から足先まで、無意識に力が入っていた筋肉の強張りを一つずつ丁寧にほどきます。</p>
+                                <p class="text-[11px] text-gray-500 mt-1 leading-snug">頭から足先まで、無意識に力が入っていた筋肉の強張りを一つずつ丁寧にほどきます。</p>
                             </a>
-                            <a href="https://www.youtube.com/results?search_query=慈悲の瞑想+セルフコンパッション+ガイド" target="_blank" rel="noopener" class="block bg-white p-2.5 rounded-xl border border-gray-100 hover:border-emerald-300 hover:shadow-sm transition">
+                            <a href="https://www.youtube.com/results?search_query=慈悲の瞑想+セルフコンパッション+ガイド" target="_blank" rel="noopener" class="block p-3 hover:bg-slate-50 transition">
                                 <div class="flex items-center justify-between text-xs font-bold text-gray-800">
                                     <span>🌸 優しい慈悲の瞑想（自己受容）</span>
-                                    <span class="text-emerald-600 text-[11px]">視聴 ↗</span>
+                                    <span class="text-emerald-600 text-[11px] font-normal">視聴 ↗</span>
                                 </div>
-                                <p class="text-[11px] text-gray-500 mt-0.5 leading-snug">「私は幸せであっていい」「無事でありますように」と、自分を優しく抱きしめる瞑想です。</p>
+                                <p class="text-[11px] text-gray-500 mt-1 leading-snug">「私は幸せであっていい」「無事でありますように」と、自分を優しく抱きしめる瞑想です。</p>
                             </a>
                         </div>
                     </div>
@@ -234,7 +242,7 @@
 
                 <!-- 4. 心の応急手当（グラウンディング・今ここリセット）タブ -->
                 <div id="tab-content-grounding" class="hidden space-y-3 text-xs text-gray-600">
-                    <div class="bg-emerald-50/80 p-3 rounded-xl border border-emerald-200/70">
+                    <div class="bg-emerald-50/60 p-3 rounded-xl border border-emerald-200/60">
                         <h4 class="font-bold text-emerald-900 mb-1 flex items-center gap-1.5 text-xs">
                             <span>🌱</span> 五感のグラウンディングとは？
                         </h4>
@@ -244,39 +252,38 @@
                     </div>
 
                     <!-- 5-4-3-2-1 リセットワーク -->
-                    <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm space-y-2.5">
-                        <h4 class="font-bold text-gray-800 text-xs flex items-center justify-between border-b pb-1">
-                            <span>👣 5-4-3-2-1 リセット法（実践ステップ）</span>
+                    <div class="bg-white rounded-xl border border-gray-200/50 shadow-xs overflow-hidden">
+                        <div class="p-3 border-b border-gray-100 flex items-center justify-between">
+                            <span class="font-bold text-gray-800 text-xs">👣 5-4-3-2-1 リセット法（実践ステップ）</span>
                             <span class="text-[10px] text-emerald-600 font-normal">上から順に見つけましょう</span>
-                        </h4>
-                        
-                        <div class="space-y-1.5 text-[11px]">
-                            <div class="p-1.5 bg-gray-50 rounded-lg flex items-start gap-2">
-                                <span class="font-bold text-emerald-700 w-5">5つ</span>
+                        </div>
+                        <div class="divide-y divide-gray-100 text-[11px]">
+                            <div class="p-2.5 flex items-start gap-2.5">
+                                <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold shrink-0 mt-0.5">5</span>
                                 <div><span class="font-bold text-gray-800">👁️ 目に見えるものを探す</span><br><span class="text-gray-500">部屋にある青いもの、時計の文字盤、窓の外の木など</span></div>
                             </div>
-                            <div class="p-1.5 bg-gray-50 rounded-lg flex items-start gap-2">
-                                <span class="font-bold text-emerald-700 w-5">4つ</span>
+                            <div class="p-2.5 flex items-start gap-2.5">
+                                <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold shrink-0 mt-0.5">4</span>
                                 <div><span class="font-bold text-gray-800">🖐️ 手や肌で触れて感じる</span><br><span class="text-gray-500">机のひんやり感、服の肌触り、足の裏の床の感触など</span></div>
                             </div>
-                            <div class="p-1.5 bg-gray-50 rounded-lg flex items-start gap-2">
-                                <span class="font-bold text-emerald-700 w-5">3つ</span>
+                            <div class="p-2.5 flex items-start gap-2.5">
+                                <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold shrink-0 mt-0.5">3</span>
                                 <div><span class="font-bold text-gray-800">👂 耳に聞こえる音を聞く</span><br><span class="text-gray-500">エアコンの動作音、遠くの車の走行音、自分の呼吸音など</span></div>
                             </div>
-                            <div class="p-1.5 bg-gray-50 rounded-lg flex items-start gap-2">
-                                <span class="font-bold text-emerald-700 w-5">2つ</span>
+                            <div class="p-2.5 flex items-start gap-2.5">
+                                <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold shrink-0 mt-0.5">2</span>
                                 <div><span class="font-bold text-gray-800">👃 鼻で香りを感じる</span><br><span class="text-gray-500">室内の空気の匂い、自分の服や手のひらの香りなど</span></div>
                             </div>
-                            <div class="p-1.5 bg-gray-50 rounded-lg flex items-start gap-2">
-                                <span class="font-bold text-emerald-700 w-5">1つ</span>
+                            <div class="p-2.5 flex items-start gap-2.5">
+                                <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold shrink-0 mt-0.5">1</span>
                                 <div><span class="font-bold text-gray-800">👅 口の中の味・感覚を確かめる</span><br><span class="text-gray-500">お水をひとくち飲む、唾液の感覚を確かめるなど</span></div>
                             </div>
                         </div>
                     </div>
 
                     <!-- 身体感覚のクイックリセット -->
-                    <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm space-y-2">
-                        <h4 class="font-bold text-gray-800 text-xs border-b pb-1">
+                    <div class="bg-white p-3 rounded-xl border border-gray-200/50 shadow-xs space-y-2">
+                        <h4 class="font-bold text-gray-800 text-xs border-b border-gray-100 pb-1.5">
                             <span>🧊 身体のクイックリセット法</span>
                         </h4>
                         <div class="space-y-1.5 text-[11px] leading-relaxed text-gray-600">
